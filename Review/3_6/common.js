@@ -55,5 +55,5 @@ class Promise {
 
 //bind
 Function.prototype.bind = function (context, ...args) {
-
+    
 }
