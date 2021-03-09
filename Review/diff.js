@@ -24,3 +24,25 @@ function search (list, id) {
   }
   return null;
 }
+
+//斐波拉契 递归 + 缓存
+function fib (n) {
+  if (n == 1 || n == 2) {
+    return 1
+  }
+
+  return fib(n - 1) + fib(n - 2)
+}
+//优化
+function fib (n) {
+  let cache = [0, 1, 1];
+
+  function _fib (n) {
+    if (cache[n]) return cache[n]
+
+    cache[n] = _fib(n - 1) + _fib(n - 2);
+    return cache[n]
+  }
+
+  return _fib(n)
+}
