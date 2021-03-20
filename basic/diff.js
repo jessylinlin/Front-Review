@@ -95,3 +95,20 @@ function isIncludes (longArr, shortArr) {
 
   return true
 }
+
+//查找最长无重复字符串 abcabcbb
+function lengthOfLongestSubstring (str) {
+  let arr = [];
+  let max = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (arr.includes(str[i]) !== -1) {
+      arr.aplice(0, i + 1);
+    }
+
+    arr.push(str[i]);
+    max = Math.max(arr.length, max);
+  }
+
+  return max;
+}

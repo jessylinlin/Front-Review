@@ -95,3 +95,50 @@ function isIncludes (longArr, shortArr) {
 
   return true
 }
+
+//bubble
+var BubbleSort = function (arr) {
+  var i = 0,
+    j = 0;
+
+  for (var i = 1; i < arr.length - 1; i++) {
+    for (var j = 0; j < arr.length - 1 - i; j++) {
+      let temp = 0;
+
+      if (arr[j] > arr[j + 1]) {
+        temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+
+  return arr
+}
+
+//翻转字符串
+function reverseString (str) {
+  let temp = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    temp += str[i];
+  }
+
+  return temp;
+}
+function reverseString (str) {
+  let arr = str.split('');
+  let i = 0,
+    j = arr.length - 1;
+
+  while (i < j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+
+    j++;
+    i--
+  }
+
+  return arr.join('');
+}
+

@@ -1,5 +1,5 @@
 //call
-Function.prototype.call = function(context, ...args) {
+Function.prototype.call = function (context, ...args) {
   context = context || window;
   const fnSymbol = Symbol('fn');
   context[fnSymbol] = this;
@@ -7,7 +7,7 @@ Function.prototype.call = function(context, ...args) {
 
   delete context[fnSymbol]
 }
-Function.prototype.apply = function(context, argsArr) {
+Function.prototype.apply = function (context, argsArr) {
   context = context || window;
   const fnSymbol = Symbol('fn');
 
@@ -17,13 +17,13 @@ Function.prototype.apply = function(context, argsArr) {
   delete context[fnSymbol];
 }
 
-Function.prototype.bind = function(context, ...args) {
+Function.prototype.bind = function (context, ...args) {
   context = context || window;
   const fnSymbol = Symbol('fn');
 
   context[fnSymbol] = this;
 
-  return function(..._args) {
+  return function (..._args) {
     args = args.concat(_args);
     context[fnSymbol](...args);
 
@@ -32,7 +32,7 @@ Function.prototype.bind = function(context, ...args) {
 }
 
 //克隆基本类型
-function shallowClone(obj) {
+function shallowClone (obj) {
   let cloneObj = {};
 
   for (let i in obj) {
@@ -43,14 +43,14 @@ function shallowClone(obj) {
 }
 
 //深度克隆基本类型
-function deepCopy(obj) {
+function deepCopy (obj) {
   let result;
 
-  if(typeof obj === 'object' ) {
+  if (typeof obj === 'object') {
     result = obj.constructor === Array ? [] : {};
 
     for (let i in obj) {
-      result[i] = typeof obj[i] === 'object' ? deepCopy(obj[i]) : obj[i] 
+      result[i] = typeof obj[i] === 'object' ? deepCopy(obj[i]) : obj[i]
     }
   } else {
     result = obj;
@@ -60,11 +60,11 @@ function deepCopy(obj) {
 }
 
 //get urlparams
-function getUrlparams(variable) {
+function getUrlparams (variable) {
   let query = window.location.search.substring(1);
   var queryArr = query.split('&');
 
-  for(let i = 0; i < queryArr.length; i++) {
+  for (let i = 0; i < queryArr.length; i++) {
     let pair = queryArr[i].split('=');
 
     if (pair[0] === variable) return pair[1]
