@@ -112,3 +112,36 @@ function lengthOfLongestSubstring (str) {
 
   return max;
 }
+
+//直接选择排序
+function directSelectSort (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    var m = i;
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[m]) {
+        m = j;
+      }
+    }
+    var temp = arr[m];
+    arr[m] = arr[i];
+    arr[i] = temp;
+  }
+  return arr
+}
+//希尔
+function swap (arr, i, j) {
+  [arr[i], arr[j]] = [arr[j], arr[i]]
+}
+function sheelSort (arr) {
+  for (let gap = Math.floor(arr.length / 2); gap > 0;) {
+    for (let i = gap; i < arr.length; i++) {
+      let j = i;
+      while (j > 0 && arr[j] < arr[j - gap]) {
+        swap(arr, j, j - gap);
+        j -= gap;
+      }
+    }
+    gap = Math.floor(gap / 2);
+  }
+  return arr
+}
